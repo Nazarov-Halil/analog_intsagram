@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load socialaccount %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Post</title>
+</head>
+<body>
+{#    <a href="{% provider_login_url 'google' %}">Войти через Google</a>#}
+
+    {% for post in post_list %}
+        <a href="{% url 'detail_post' post.id %}">{{ post.description }}</a>
+
+        {% for image in post.images.all %}
+            <img src="{{ image.image.url }}" alt="RAaf" style="width: 100px; height: 100px;">
+        {% endfor %}
+
+
+        <p>{{ post.location }}</p>
+        <p>{{ post.created_at }}</p>
+    {% endfor %}
+</body>
+</html>
